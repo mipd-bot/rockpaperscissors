@@ -24,20 +24,45 @@ console.log(choicePosition)
 // when called, computerPlay function randomly returns rock, paper or scissors using the randomly
 //picked index in choicePosition
 function computerPlay(){
-    return playChoices[choicePosition]
+     return playChoices[choicePosition]
 }
 
+const computerSelection = computerPlay()
+console.log(computerSelection)
 
 /* function 2 plays one round, intakes the playerSelection and the computerSelection(result of comuterPlay
-)and returns a string that declares the winner "you (winner)" (winning element) beats (losing element)
+)and returns a string that declares the winner "you (winner)" (winning element) beats (losing element)*/
 
-calling computerChoice based on function
+function RPSround (playerSelection, computerSelection){
+    if ((playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'scissors' && computerSelection === 'paper')){
+        console.log(`You win! ${playerSelection} beats ${computerSelection}`)
+    } else if ((playerSelection === 'rock' && computerSelection === 'paper') || (playerSelection === 'scissors' && computerSelection === 'rock') || (playerSelection === 'paper' && computerSelection === 'scissors')){
+            console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+    } else if (playerSelection === computerSelection){
+        console.log("It\'s a tie!");
+    } else {
+        console.log('Your choice is invalid. Please play correctly.');
+    }
+}
+
+RPSround("ROCK".toLowerCase(), computerSelection)
+
+/*{
+    if (playerSelection === 'paper' && computerSelection === 'rock'){
+        console.log('You Win! Paper beats Rock');
+    } else if (playerSelection === 'rock' && computerSelection === 'scissors'){
+        console.log('You win! Rock beats Scissors');
+    } else if (playerSelection === 'scissors' && computerSelection === 'paper'){
+        console.log('You win! Scissors beat Paper')
+    }else if (playerSelection) === 
+
+}*/
+
+/*calling computerChoice based on function
 calling playerChoice
 calling let winner
 calling let loser*/
 
-
-
- </script>
+    </script>
 </body>
 </html>
