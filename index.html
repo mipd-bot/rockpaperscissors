@@ -6,6 +6,38 @@
 <title></title>
 </head>
 <body>
+ <script>
 
+// possible choices that can be played by human or computer
+let playChoices = [
+    'rock',
+    'paper',
+    'scissors'
+];
+// choicePosition generates a random number corresponding to a valid index for the array playChoices
+// in this case, the variable will be either 0 (rock), 1 (paper) or 2(scissors)
+let choicePosition = Math.floor(Math.random()*playChoices.length);
+
+// checking what the index came back to ensure everything works
+console.log(choicePosition)
+
+// when called, computerPlay function randomly returns rock, paper or scissors using the randomly
+//picked index in choicePosition
+function computerPlay(){
+    return playChoices[choicePosition]
+}
+
+
+/* function 2 plays one round, intakes the playerSelection and the computerSelection(result of comuterPlay
+)and returns a string that declares the winner "you (winner)" (winning element) beats (losing element)
+
+calling computerChoice based on function
+calling playerChoice
+calling let winner
+calling let loser*/
+
+
+
+ </script>
 </body>
 </html>
