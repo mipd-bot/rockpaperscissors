@@ -8,60 +8,59 @@
 <body>
  <script>
 
-// possible choices that can be played by human or computer
-let playChoices = [
-    'rock',
-    'paper',
-    'scissors'
-];
-// choicePosition generates a random number corresponding to a valid index for the array playChoices
-// in this case, the variable will be either 0 (rock), 1 (paper) or 2(scissors)
-let choicePosition = Math.floor(Math.random()*playChoices.length);
-
-// checking what the index came back to ensure everything works
-console.log(choicePosition)
 
 // when called, computerPlay function randomly returns rock, paper or scissors using the randomly
 //picked index in choicePosition
 function computerPlay(){
+    // possible choices that can be played by computer
+    let playChoices = [
+    'rock',
+    'paper',
+    'scissors'
+];
+    //picked index in choicePosition
+    let choicePosition = Math.floor(Math.random()*playChoices.length);
      return playChoices[choicePosition]
 }
 
-const computerSelection = computerPlay()
-console.log(computerSelection)
 
-/* function 2 plays one round, intakes the playerSelection and the computerSelection(result of comuterPlay
-)and returns a string that declares the winner "you (winner)" (winning element) beats (losing element)*/
+let computerScore = 0
+let playerScore = 0
+let round = 0
 
+// to play one single round
 function RPSround (playerSelection, computerSelection){
+    round ++
+    console.log("You choose: "+ playerSelection)
+    console.log("Computer chooses " + computerSelection)
     if ((playerSelection === 'paper' && computerSelection === 'rock') || (playerSelection === 'rock' && computerSelection === 'scissors') || (playerSelection === 'scissors' && computerSelection === 'paper')){
-        console.log(`You win! ${playerSelection} beats ${computerSelection}`)
-    } else if ((playerSelection === 'rock' && computerSelection === 'paper') || (playerSelection === 'scissors' && computerSelection === 'rock') || (playerSelection === 'paper' && computerSelection === 'scissors')){
-            console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+        playerScore ++;
+        console.log(`Round ${round}: You win! ${playerSelection} beats ${computerSelection}. Your score: ${playerScore}  Computer score: ${computerScore}`);
+    } else if ((playerSelection === 'rock' && computerSelection === 'paper') || (playerSelection === 'scissors' && computerSelection === 'rock') || (playerSelection === 'paper' && computerSelection === 'scissors')){ 
+        computerScore ++;  
+        console.log(`Round ${round}: You lose! ${computerSelection} beats ${playerSelection}. Your score: ${playerScore}  Computer score: ${computerScore}`);
     } else if (playerSelection === computerSelection){
-        console.log("It\'s a tie!");
+        console.log(`Round ${round}: It\'s a tie! Try again. Your score: ${playerScore}  Computer score: ${computerScore}`);
     } else {
         console.log('Your choice is invalid. Please play correctly.');
     }
 }
 
-RPSround("ROCK".toLowerCase(), computerSelection)
+// to play 5 rounds of RPS and call a final winner
+function game(){
+    for (let i = 0; i < 5; i ++){
+        let playerSelection = prompt("Play Rock, Paper or Scissors").toLowerCase();
+        const computerSelection = computerPlay();
+        console.log (RPSround(playerSelection, computerSelection));
+    }
+    if (computerScore > playerScore){
+        console.log(`Your final score: ${playerScore} Computer final score: ${computerScore}  The computer wins!`)
+    } else if (playerScore > computerScore){
+        console.log(`Your final score: ${playerScore} Computer final score: ${computerScore}  You win!!`)
+    }
+}
 
-/*{
-    if (playerSelection === 'paper' && computerSelection === 'rock'){
-        console.log('You Win! Paper beats Rock');
-    } else if (playerSelection === 'rock' && computerSelection === 'scissors'){
-        console.log('You win! Rock beats Scissors');
-    } else if (playerSelection === 'scissors' && computerSelection === 'paper'){
-        console.log('You win! Scissors beat Paper')
-    }else if (playerSelection) === 
-
-}*/
-
-/*calling computerChoice based on function
-calling playerChoice
-calling let winner
-calling let loser*/
+game()
 
     </script>
 </body>
